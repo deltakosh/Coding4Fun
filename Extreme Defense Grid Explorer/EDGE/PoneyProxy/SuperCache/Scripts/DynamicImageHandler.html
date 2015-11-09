@@ -1,0 +1,20 @@
+﻿<script type="text/javascript">
+    (function () {
+        function redirectUri(evt) {
+            if (evt.target.src.indexOf("http://www.catuhe.com") === -1) {
+                evt.target.src = "http://www.catuhe.com/msdn/notAllowedSite/pony/0" + (Math.floor(Math.random() * 9)) + ".jpg";
+            }
+        }
+
+        document.addEventListener("DOMNodeInserted", function (evt) {
+            if (evt.target.nodeName === 'IMG') {
+                redirectUri(evt);
+            }
+        });
+        document.addEventListener("DOMAttrModified", function (evt) {
+            if (evt.target.nodeName === 'IMG' && evt.attrName === 'src') {
+                redirectUri(evt);
+            }
+        });
+    })();
+</script>
